@@ -52,7 +52,7 @@ dishRouter.route('/')
 
 dishRouter.route('/:dishId')
     .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
-    .get(ors.cors, (req, res, next) => {
+    .get(cors.cors, (req, res, next) => {
         Dishes.findById(req.params.dishId)
             .populate('comments.author')
             .then((dish) => {
